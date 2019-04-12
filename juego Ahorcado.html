@@ -1,0 +1,397 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.uv.es/~jac/guia/jscript/palabras.htm -->
+<html>
+    <head>
+        <script src="http://aprendeenlinea.udea.edu.co/lms/moodle/lib/ufo.js" type="text/javascript">
+        </script>
+        <link href="http://aprendeenlinea.udea.edu.co/lms/moodle/theme/standard/styles.php" rel="stylesheet" type="text/css"/>
+        <link href="http://aprendeenlinea.udea.edu.co/lms/moodle/theme/aprendeenlinea/styles.php" rel="stylesheet" type="text/css"/>
+        <title>
+            Ejemplo de juego
+        </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+            <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+                <link href="css/bootstrap.min.css" rel="stylesheet">
+                    <link href="css/Personalizacion/Mi Estilo.css" rel="stylesheet">
+                        <link href="css/bootstrap-social.css" rel="stylesheet">
+                            <link href="https://use.fontawesome.com/38f344ad72.css" rel="stylesheet">
+                            </link>
+                        </link>
+                    </link>
+                </link>
+            </meta>
+            <script language="JavaScript">
+                var hombre = new Array("___\n", "   |\n", "   O\n", "  /", "|", "\\\n", "  /", " \\\n", "___")
+var palabra
+var libreriaPalabras = new Array("m u l t i m e d i a", "i n t e r n a u t a", "s e r v i d o r", "p r o t o c o l o", "c o r t a f u e g o s",
+"n a v e g a d o r", "n o d o", "m a r c o", "p a g i n a", "t e l a r a ñ a",
+"d e s c a r g a r", "v i r t u a l", "m e m o r i a", "d i s c o", "l o c a l",
+"c o n e c t a r", "d e s c o n e c t a r", "e n c a m i n a d o r", "i n t e r n e t", "d o m i n i o",
+"d i n a m i c o", "h i p e r v i n c u l o", "e n l a c e", "m a r c a d o r", "o r d e n a d o r", "l a p i z", "o f i m a t i c a", "i n f o r m e" )
+var partes = 0
+var colNueva = 0
+var jugando
+
+
+function ObtienePalabra() {
+   //obtiene la palabra para jugar de forma pseudoaleatoria
+   var indice = Math.round ( Math.random() * 27 )
+   var cadena = new String( libreriaPalabras[indice] )
+   palabra = cadena.split(" ")
+}
+
+
+function DibujaHombre(visor, partes) {
+   //dibuja el hombre ahorcado
+   //partes indica el numero de partes a dibujar
+   var dibujo = ""
+   if (partes < 10)
+      for(var x = 0; x < partes; x++) {
+         dibujo += hombre[x]
+      }
+   visor.displayHombre.value = dibujo
+}
+
+
+function DibujaLetra(visor, letra) {
+   //dibuja una letra de la palabra
+   //posicion indica donde debe dibujar la letra
+   var flag = false 
+   //indica si se encontro la letra 
+   //obtiene cadena actual
+   var cadena = new String(visor.displayPalabra.value)
+   //la separa en sus espacios
+   var letrasCadena = cadena.split(" ")
+   cadena = "" 
+   for (var x = 0; x < palabra.length; x++) {
+      if (palabra[x] == letra) {
+         cadena += letra + " "
+         flag = true
+      } else
+         cadena += letrasCadena[x] + " "
+   }
+   visor.displayPalabra.value = cadena
+   return flag
+}
+
+
+function NuevaLetra(visor, letra) {
+   //añade letra lista de letras
+   visor.displayLetras.value += letra + " "
+   //comprueba si ha de pasar a la siguiente fila
+   if(colNueva == 3) {
+      visor.displayLetras.value += "\n"
+      colNueva = 0
+   } else
+      colNueva++
+}
+
+
+function Juega(visor, letra) {
+   //comprueba si esta jugando
+   if (jugando) {
+      //ciclo de jugada
+      //1. añade letra a la lista
+      NuevaLetra(visor, letra)
+      //2. dibuja la letra y comprueba si acierto
+      var acierto = DibujaLetra(visor, letra)
+      //3. si no acierto, dibuja hombre
+      if (!acierto)
+         DibujaHombre(visor, ++partes)
+      //4. comprueba si fin
+      if (partes == 9)
+         FinJuego(false)
+      else if (CompruebaPalabra(visor))
+         FinJuego(true)
+      } else {
+         alert('Pulsa Juego nuevo para comenzar\nuna partida nueva.')
+   }
+}
+
+function IniciaJuego(visor) {
+   //inicializa visor y variables globales
+   jugando = true
+   partes = 0
+   colNueva = 0
+   ObtienePalabra()
+   DibujaHombre(visor, partes)
+   visor.displayPalabra.value = ""
+   for (var x = 0; x < palabra.length; x++)
+      visor.displayPalabra.value += "_ "
+   visor.displayLetras.value = ""
+}
+
+function CompruebaPalabra(visor) {
+   //comprueba si se completo toda la palabra
+   var fin = true
+   //obtiene cadena actual
+   var cadena = new String(visor.displayPalabra.value)
+   //la separa en sus espacios
+   var letrasCadena = cadena.split(" ")
+   for(var x = 0; x < letrasCadena.length; x++)
+      if (letrasCadena[x] == "_")
+         fin = false
+   return fin
+}
+
+
+function FinJuego(resultado) {
+   //indica que si se ha perdido o ganado
+   var solucion = ""
+   jugando = false 
+   if (resultado) {
+      document.visor.ganadas.value++
+      alert("Acertaste !")
+   } else {
+     document.visor.perdidas.value++
+     //construye la palabra solucion
+     for (var x = 0; x < palabra.length; x++)
+        solucion += palabra[x]
+     alert("Has muerto !\n La palabra era: " + solucion)
+   }
+}
+            </script>
+            <meta content="MSHTML 6.00.2900.2802" name="GENERATOR"/>
+        </meta>
+    </head>
+    <body>
+        <div class="ahorcado2 jumbotron">
+            <div class="container">
+                <img align="right" alt="" class="img-responsive" height="400" src="images/Ahorcado img1.jpg" width="400">
+                    <h1>
+                        Juego del ahorcado
+                    </h1>
+                    <br>
+                        <p>
+                            Descubre las palabras ocultas en el juego y podras Ganarle
+                  Intentalo!!!.
+                        </p>
+                        <br>
+                            <a class="btn btn-primary btn-md" href="index.html" role="button">
+                                << Inicio OVI
+                            </a>
+                            <a class="btn btn-primary btn-md" href="pacman.html" role="button">
+                                Juegue Pacman>>
+                            </a>
+                        </br>
+                    </br>
+                </img>
+            </div>
+        </div>
+        <form class="form-inline" name="visor">
+            <center>
+                <table width="547">
+                    <!--<img align="left" alt="" height="280" src="images/Ahorcado img2.jpg" width="280">-->
+                    <tbody class="ahorcado1">
+                        <tr>
+                            <td align="middle" colspan="3" width="150">
+                                <textarea cols="15" name="displayHombre" rows="6">
+                                </textarea>
+                                <td align="middle" colspan="3" width="150">
+                                    <textarea cols="15" name="displayLetras" rows="6">
+                                    </textarea>
+                                    <td width="200">
+                                        <tr>
+                                            <td align="middle" colspan="6" width="300">
+                                                <input name="displayPalabra" size="42">
+                                                    <td align="middle">
+                                                        <tr>
+                                                            <td align="middle" width="50">
+                                                                <input name="botA" onclick="Juega(this.form, 'a')" type="button" value=" A ">
+                                                                    <td align="middle" width="50">
+                                                                        <input name="botB" onclick="Juega(this.form, 'b')" type="button" value=" B ">
+                                                                            <td align="middle" width="50">
+                                                                                <input name="botC" onclick="Juega(this.form, 'c')" type="button" value=" C ">
+                                                                                    <td align="middle" width="50">
+                                                                                        <input name="botD" onclick="Juega(this.form, 'd')" type="button" value=" D ">
+                                                                                            <td align="middle" width="50">
+                                                                                                <input name="botE" onclick="Juega(this.form, 'e')" type="button" value=" E ">
+                                                                                                    <td align="middle" width="50">
+                                                                                                        <input name="botF" onclick="Juega(this.form, 'f')" type="button" value=" F ">
+                                                                                                            <td>
+                                                                                                                <tr>
+                                                                                                                    <td align="middle">
+                                                                                                                        <input name="botG" onclick="Juega(this.form, 'g')" type="button" value=" G ">
+                                                                                                                            <td align="middle">
+                                                                                                                                <input name="botH" onclick="Juega(this.form, 'h')" type="button" value=" H ">
+                                                                                                                                    <td align="middle">
+                                                                                                                                        <input name="botI" onclick="Juega(this.form, 'i')" type="button" value=" I ">
+                                                                                                                                            <td align="middle">
+                                                                                                                                                <input name="botJ" onclick="Juega(this.form, 'j')" type="button" value=" J ">
+                                                                                                                                                    <td align="middle">
+                                                                                                                                                        <input name="botK" onclick="Juega(this.form, 'k')" type="button" value=" K ">
+                                                                                                                                                            <td align="middle">
+                                                                                                                                                                <input name="botL" onclick="Juega(this.form, 'l')" type="button" value=" L ">
+                                                                                                                                                                    <td align="right" valign="center">
+                                                                                                                                                                        Ganadas:
+                                                                                                                                                                        <input name="ganadas" size="4" value="0">
+                                                                                                                                                                            <tr>
+                                                                                                                                                                                <td align="middle">
+                                                                                                                                                                                    <input name="botM" onclick="Juega(this.form, 'm')" type="button" value=" M ">
+                                                                                                                                                                                        <td align="middle">
+                                                                                                                                                                                            <input name="botN" onclick="Juega(this.form, 'n')" type="button" value=" N ">
+                                                                                                                                                                                                <td align="middle">
+                                                                                                                                                                                                    <input name="botÑ" onclick="Juega(this.form, 'ñ')" type="button" value=" Ñ ">
+                                                                                                                                                                                                        <td align="middle">
+                                                                                                                                                                                                            <input name="botO" onclick="Juega(this.form, 'o')" type="button" value=" O ">
+                                                                                                                                                                                                                <td align="middle">
+                                                                                                                                                                                                                    <input name="botP" onclick="Juega(this.form, 'p')" type="button" value=" P ">
+                                                                                                                                                                                                                        <td align="middle">
+                                                                                                                                                                                                                            <input name="botQ" onclick="Juega(this.form, 'q')" type="button" value=" Q ">
+                                                                                                                                                                                                                                <td align="right" valign="center">
+                                                                                                                                                                                                                                    Perdidas:
+                                                                                                                                                                                                                                    <input name="perdidas" size="4" value="0">
+                                                                                                                                                                                                                                        <tr>
+                                                                                                                                                                                                                                            <td align="middle">
+                                                                                                                                                                                                                                                <input name="botR" onclick="Juega(this.form, 'r')" type="button" value=" R ">
+                                                                                                                                                                                                                                                    <td align="middle">
+                                                                                                                                                                                                                                                        <input name="botS" onclick="Juega(this.form, 's')" type="button" value=" S ">
+                                                                                                                                                                                                                                                            <td align="middle">
+                                                                                                                                                                                                                                                                <input name="botT" onclick="Juega(this.form, 't')" type="button" value=" T ">
+                                                                                                                                                                                                                                                                    <td align="middle">
+                                                                                                                                                                                                                                                                        <input name="botU" onclick="Juega(this.form, 'u')" type="button" value=" U ">
+                                                                                                                                                                                                                                                                            <td align="middle">
+                                                                                                                                                                                                                                                                                <input name="botV" onclick="Juega(this.form, 'v')" type="button" value=" V ">
+                                                                                                                                                                                                                                                                                    <td align="middle">
+                                                                                                                                                                                                                                                                                        <input name="botW" onclick="Juega(this.form, 'w')" type="button" value=" W ">
+                                                                                                                                                                                                                                                                                            <td>
+                                                                                                                                                                                                                                                                                                <tr>
+                                                                                                                                                                                                                                                                                                    <td align="middle">
+                                                                                                                                                                                                                                                                                                        <input name="botX" onclick="Juega(this.form, 'x')" type="button" value=" X ">
+                                                                                                                                                                                                                                                                                                            <td align="middle">
+                                                                                                                                                                                                                                                                                                                <input name="botY" onclick="Juega(this.form, 'y')" type="button" value=" Y ">
+                                                                                                                                                                                                                                                                                                                    <td align="middle">
+                                                                                                                                                                                                                                                                                                                        <input name="botZ" onclick="Juega(this.form, 'z')" type="button" value=" Z ">
+                                                                                                                                                                                                                                                                                                                            <td align="middle" colspan="3">
+                                                                                                                                                                                                                                                                                                                                <input name="Inicia" onclick="IniciaJuego(this.form)" type="button" value="  Juego nuevo   ">
+                                                                                                                                                                                                                                                                                                                                    <td align="middle">
+                                                                                                                                                                                                                                                                                                                                        <input name="B1" onclick="this.form.ganadas.value='0'; this.form.perdidas.value='0'" type="button" value="Limpiar">
+                                                                                                                                                                                                                                                                                                                                        </input>
+                                                                                                                                                                                                                                                                                                                                    </td>
+                                                                                                                                                                                                                                                                                                                                </input>
+                                                                                                                                                                                                                                                                                                                            </td>
+                                                                                                                                                                                                                                                                                                                        </input>
+                                                                                                                                                                                                                                                                                                                    </td>
+                                                                                                                                                                                                                                                                                                                </input>
+                                                                                                                                                                                                                                                                                                            </td>
+                                                                                                                                                                                                                                                                                                        </input>
+                                                                                                                                                                                                                                                                                                    </td>
+                                                                                                                                                                                                                                                                                                </tr>
+                                                                                                                                                                                                                                                                                            </td>
+                                                                                                                                                                                                                                                                                        </input>
+                                                                                                                                                                                                                                                                                    </td>
+                                                                                                                                                                                                                                                                                </input>
+                                                                                                                                                                                                                                                                            </td>
+                                                                                                                                                                                                                                                                        </input>
+                                                                                                                                                                                                                                                                    </td>
+                                                                                                                                                                                                                                                                </input>
+                                                                                                                                                                                                                                                            </td>
+                                                                                                                                                                                                                                                        </input>
+                                                                                                                                                                                                                                                    </td>
+                                                                                                                                                                                                                                                </input>
+                                                                                                                                                                                                                                            </td>
+                                                                                                                                                                                                                                        </tr>
+                                                                                                                                                                                                                                    </input>
+                                                                                                                                                                                                                                </td>
+                                                                                                                                                                                                                            </input>
+                                                                                                                                                                                                                        </td>
+                                                                                                                                                                                                                    </input>
+                                                                                                                                                                                                                </td>
+                                                                                                                                                                                                            </input>
+                                                                                                                                                                                                        </td>
+                                                                                                                                                                                                    </input>
+                                                                                                                                                                                                </td>
+                                                                                                                                                                                            </input>
+                                                                                                                                                                                        </td>
+                                                                                                                                                                                    </input>
+                                                                                                                                                                                </td>
+                                                                                                                                                                            </tr>
+                                                                                                                                                                        </input>
+                                                                                                                                                                    </td>
+                                                                                                                                                                </input>
+                                                                                                                                                            </td>
+                                                                                                                                                        </input>
+                                                                                                                                                    </td>
+                                                                                                                                                </input>
+                                                                                                                                            </td>
+                                                                                                                                        </input>
+                                                                                                                                    </td>
+                                                                                                                                </input>
+                                                                                                                            </td>
+                                                                                                                        </input>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </td>
+                                                                                                        </input>
+                                                                                                    </td>
+                                                                                                </input>
+                                                                                            </td>
+                                                                                        </input>
+                                                                                    </td>
+                                                                                </input>
+                                                                            </td>
+                                                                        </input>
+                                                                    </td>
+                                                                </input>
+                                                            </td>
+                                                        </tr>
+                                                    </td>
+                                                </input>
+                                            </td>
+                                        </tr>
+                                    </td>
+                                </td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </center>
+        </form>
+        <div class="container">
+            <ul style="font-size-adjust: 0.58 ">
+                <h2>
+                    Instrucciones del Juego:
+                </h2>
+                <li>
+                    <h4>
+                        - Se dibuja en  el tablero, colocando una línea por cada letra de la palabra o frase incógnita. Se debe entregar una pista de la palabra incógnita. Se dibuja la base de la horca (sin el muñeco)
+                    </h4>
+                </li>
+                <li>
+                    <h4>
+                        - Al inicio el jugador oprime una letra. Si la letra está, se anota en el tablero de la derecha y en todas las casillas de la misma letra. Si no está, se pone la letra bajo la horca y se dibuja una parte del muñeco.
+                    </h4>
+                </li>
+                <li>
+                    <h4>
+                        - El muñeco se dibuja en 10 partes (horca, cabeza, tronco y extremidades), por lo que el adivinador tiene 6 posibilidades de fallar.
+                    </h4>
+                </li>
+                <li>
+                    <h4>
+                        - Gana el jugador si descubre la palabra o frase incógnita y Pierde si se dibuja el muñeco en la horca.
+                    </h4>
+                </li>
+                <li>
+                    <h4>
+                        -Solo se podra Oprimir las letras si el muñeco no se ha dibujado completamente .
+                    </h4>
+                </li>
+                <li>
+                    <h4>
+                        -Cuando la palabra se ha completado  se identifica como ganador aumentando los juegos ganados, de lo contrario le muestra un  mensaje que ha perdido el juego y oprime el boton de "Juego nuevo" para volver a empezar
+                    </h4>
+                </li>
+            </ul>
+        </div>
+        <hr>
+            <!-- <center>
+                <h3>
+                    <a class="btn btn-primary btn-md" href="index.html" role="button">
+                        Inicio del OVI
+                    </a>
+                </h3>
+            </center>-->
+        </hr>
+    </body>
+</html>

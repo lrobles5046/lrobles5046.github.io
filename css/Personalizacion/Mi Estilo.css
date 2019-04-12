@@ -1,0 +1,178 @@
+header {
+    /*background: url(Presentacion.png) top left no-repeat;*/
+    background: #FFFFFF;
+    color: #005883;
+    /* width: 50px;
+    height: 200px;
+    margin: 0px;
+    padding: 0px;*/
+}
+
+.row_header{
+   background: #f47920;
+    color: #FFFFFF;
+
+}
+
+
+.main {
+    background: #FFFFFF;
+    color: #005883;
+    border: 5px solid orange;*/
+
+}
+
+.row_main{
+
+  border: 5px solid grey;*/
+}
+aside {
+    background: #005883;
+    color: #FFFFFF;
+}
+
+.color1 {
+    background-color: #005883;
+    color: #FFFFFF
+}
+
+.color2 {
+    background-color: #FFFFFF;
+    color: #005883
+}
+
+.GITHUB {
+    background: #005883;
+    color: #FFFFFF
+}
+
+.CSS3 {
+    background:#2ED445;
+    color: #FFFFFF
+}
+
+.HTML5{
+
+	background:#F67621;
+    color: #FFFFFF
+}
+
+.HTML5_Mm{
+
+	background:#F85252;
+    color: #FFFFFF
+}
+
+.CSS3_TRU{
+
+	background:#A032C0;
+    color: #FFFFFF
+}
+
+.NAV_BAR{
+
+	    background-color: #005883;
+        color: #FFFFFF
+}
+.NAV_BAR_0{
+
+        background-color:#764878;
+        color: #FFFFFF
+}
+
+.NAV_BAR_1{
+
+        background-color: #7B4141;
+        color: #FFFFFF
+}
+.NAV_BAR_2{
+
+        background-color:#59857A;
+        color: #FFFFFF
+}
+.rad0{
+
+border: 2px solid gray;
+background-color: #9CE4EC;
+
+}
+
+.rad1{
+
+border: 2px solid gray;
+background-color: #F0E480;
+
+}
+
+.rad2{
+
+border: 2px solid gray;
+background-color: #DFDCDC;
+
+}
+
+.rad3{
+
+border: 2px solid gray;
+background-color:#DAF4EA;
+
+}
+
+
+/* sólo color de fondo */
+
+footer {
+    background: #f0b829;
+    color: #241F1F
+}
+
+.search{
+
+background-color: #FFFFFF;
+	
+}
+
+.autores1{
+
+ background-color:#3080B2;
+ color:#FFFFFF;
+
+
+}  
+.autores2{
+
+ background-color:#948D8D;
+ color:#FFFFFF;
+
+
+} 
+
+.autores3{
+
+border: 2px solid gray;
+background-color:#FFFFFF;
+
+
+}
+
+.ahorcado1{
+border: 2px solid white;
+background-color: #F1F2A5
+}
+
+.ahorcado2{
+     background-color: #95CCCD
+
+}
+.pacman{
+
+    background:#D6A3F0;
+    color: #FFFFFF
+
+}
+.github_pre{
+
+    background: #676AA9;
+    color: #FFFFFF
+
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE doctype html>
+<html lang="en">
+    <head>
+        <style>
+            body{
+        background-color: #454545
+ }
+        </style>
+        <meta charset="utf-8">
+            <title>
+                Mi Primer Juego HTML
+                <link href="../css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+                <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+                    </script>
+                    <script src="../js/fileinput.min.js" type="text/javascript">
+                    </script>
+                </link>
+            </title>
+            <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+                <link href="css/bootstrap.min.css" rel="stylesheet">
+                    <link href="css/Personalizacion/Mi Estilo.css" rel="stylesheet">
+                        <link href="css/bootstrap-social.CSS" rel="stylesheet">
+                        </link>
+                    </link>
+                </link>
+            </meta>
+        </meta>
+        <style>
+            .cuadrito{width:60px;height:60px;border:solid 4px;float:left;font-size:25px;text-align:center;}
+        #div_contenedor{width:204px;border:solid 0px;margin:auto;}
+        li{font-size:28px;width:850px;margin-bottom:20px;}
+        </style>
+        <script>
+            var turno = "X";    
+        var turno2= "O";
+        var bandera=1;
+        var ban=false;
+        var opciones = new Array(9);//arreglo para las pocisiones del gato
+        function marcar(id){        
+            // Para los turnos
+            var celda = document.getElementById(id);
+            if(bandera%2!=0 && opciones[id]!=0){
+                celda.value = turno;
+                document.getElementById("div_turno").innerHTML="Turno del jugador : "+turno2;celda.style.background="lightblue";
+                opciones[id]=1;
+            }else if(bandera%2==0 && opciones[id]!=1){
+                celda.value=turno2;
+                document.getElementById("div_turno").innerHTML="Turno del jugador : "+turno;celda.style.background="lightgreen";
+                opciones[id]=0;
+            }
+            bandera++;
+            jugadorX();
+            jugadorO();
+        }   
+ 
+        function jugadorX(){
+                //para el jugador X
+                if(opciones[1]==1 && opciones[2]==1 && opciones[3]==1){//primer linea horizontal
+                    alert("Felicidades Jugador " +turno+ " Ganaste");
+                }else if(opciones[4]==1 && opciones[5]==1 && opciones[6]==1){//segunda linea horizontal
+                    alert("Felicidades Jugador " +turno+ " Ganaste");
+                }else if(opciones[7]==1 && opciones[8]==1 && opciones[9]==1){//tercera linea horizontal
+                    alert("Felicidades Jugador " +turno+ " Ganaste");
+                }else if(opciones[1]==1 && opciones[5]==1 &&opciones[9]==1){//primera linea diagonal
+                    alert("Felicidades Jugador " +turno+ " Ganaste");
+                }else if(opciones[3]==1 && opciones[5]==1 &&opciones[7]==1){//segunda linea diagonal
+                    alert("Felicidades Jugador " +turno+ " Ganaste");
+                }else if(opciones[1]==1 && opciones[4]==1 &&opciones[7]==1){//primer linea vertical izquierda
+                    alert("Felicidades Jugador " +turno+ " Ganaste");
+                }else if(opciones[2]==1 && opciones[5]==1 &&opciones[8]==1){//linea de enmedio vertical
+                    alert("Felicidades Jugador " +turno+ " Ganaste");
+                }else if(opciones[3]==1 && opciones[6]==1 &&opciones[9]==1){//tercer linea vertical derecha
+                    alert("Felicidades Jugador " +turno+ " Ganaste");
+                }
+                }
+                // para el jugador 2
+               function jugadorO(){
+                if(opciones[1]==0 && opciones[2]==0 && opciones[3]==0){//primer linea horizontal
+                    alert("Felicidades Jugador " +turno2+ " Ganaste");
+                }else if(opciones[4]==0 && opciones[5]==0 && opciones[6]==0){//segunda linea horizontal
+                    alert("Felicidades Jugador " +turno2+ " Ganaste");
+                }else if(opciones[7]==0 && opciones[8]==0 && opciones[9]==0){//tercera linea horizontal
+                    alert("Felicidades Jugador " +turno2+ " Ganaste");
+                }else if(opciones[1]==0 && opciones[5]==0 &&opciones[9]==0){//primera linea diagonal
+                    alert("Felicidades Jugador " +turno2+ " Ganaste");
+                }else if(opciones[3]==0 && opciones[5]==0 &&opciones[7]==0){//segunda linea diagonal
+                    alert("Felicidades Jugador " +turno2+ " Ganaste");
+                }else if(opciones[1]==0 && opciones[4]==0 &&opciones[7]==0){//primer linea vertical izquierda
+                    alert("Felicidades Jugador " +turno2+ " Ganaste");
+                }else if(opciones[2]==0 && opciones[5]==0 &&opciones[8]==0){//linea de enmedio vertical
+                    alert("Felicidades Jugador " +turno2+ " Ganaste");
+                }else if(opciones[3]==0 && opciones[6]==0 &&opciones[9]==0){//tercer linea vertical derecha
+                    alert("Felicidades Jugador " +turno2+ " Ganaste");
+                }
+               }
+                // funcion para reiniciar el juego
+               function reiniciar(){
+                location.reload();
+               }
+        </script>
+    </head>
+    <body class="rad2">
+        <div class="HTML5_Mm jumbotron">
+            <div class="container">
+                <h1>
+                    Mi Primer Juego HTML
+                </h1>
+                <br>
+                    <p>
+                        Este es el juego de Triqui donde dos jugadores, X y O  y despues de cada movimiento (click) de un jugador, se verifica si con este movimiento se ha ganado la partida y se manda un mensaje de felicitación o sino se reinicia el juego.
+                    </p>
+                    <br>
+                        <a class="btn btn-primary btn-md" href="index.html" role="button">
+                            << Inicio OVI
+                        </a>
+                        <a class="btn btn-primary btn-md" href="juego Ahorcado.html" role="button">
+                            Juego del Ahorcado >>
+                        </a>
+                    </br>
+                </br>
+            </div>
+        </div>
+        <!-- Tablero -->
+        <div id="div_contenedor">
+            <input class="cuadrito" id="1" onclick="marcar(this.id)" readonly="" type="text" value="">
+                <input class="cuadrito" id="2" onclick="marcar(this.id)" readonly="" type="text" value="">
+                    <input class="cuadrito" id="3" onclick="marcar(this.id)" readonly="" type="text" value="">
+                        <input class="cuadrito" id="4" onclick="marcar(this.id)" readonly="" type="text" value="">
+                            <input class="cuadrito" id="5" onclick="marcar(this.id)" readonly="" type="text" value="">
+                                <input class="cuadrito" id="6" onclick="marcar(this.id)" readonly="" type="text" value="">
+                                    <input class="cuadrito" id="7" onclick="marcar(this.id)" readonly="" type="text" value="">
+                                        <input class="cuadrito" id="8" onclick="marcar(this.id)" readonly="" type="text" value="">
+                                            <input class="cuadrito" id="9" onclick="marcar(this.id)" readonly="" type="text" value="">
+                                                <div id="div_turno">
+                                                    Turno del jugador: X
+                                                </div>
+                                                <button onclick="reiniciar()">
+                                                    Reiniciar Juego
+                                                </button>
+                                            </input>
+                                        </input>
+                                    </input>
+                                </input>
+                            </input>
+                        </input>
+                    </input>
+                </input>
+            </input>
+        </div>
+        <div class="container">
+            <ul style="font-size-adjust: 0.58 ">
+                <h2>
+                    Instrucciones del Juego:
+                </h2>
+                <li>
+                    <small>
+                        1.  Dos jugadores, X y O
+                    </small>
+                </li>
+                <li>
+                    <small>
+                        2.  Despues de cada movimiento (click) de un jugador, se verifica si con este movimiento se ha ganado la partida y se manda un mensaje de felicitación
+                    </small>
+                </li>
+                <li>
+                    <small>
+                        3. Si despues de un movimiento no se gana la partida, se cede el turno al otro jugador
+                    </small>
+                </li>
+                <li>
+                    <small>
+                        4. Actualizar en cada cambio de turno el mensaje en la parte inferior del tablero
+                    </small>
+                </li>
+                <li>
+                    <small>
+                        5. Solo se podra "marcar" una celda que NO ha sido previamente marcada.
+                    </small>
+                </li>
+                <li>
+                    <small>
+                        6.Cuando el tablero se ha completado sin identificarse un ganador, se reinicia el juego
+                    </small>
+                </li>
+            </ul>
+        </div>
+        <script src="js/jquery.js">
+        </script>
+        <script src="js/bootstrap.min.js">
+        </script>
+    </body>
+</html>

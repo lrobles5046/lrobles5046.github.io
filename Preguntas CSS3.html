@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>
+                Preguntas CSS3
+            </title>
+            <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+                <link href="css/bootstrap.min.css" rel="stylesheet">
+                    <link href="css/Personalizacion/Mi Estilo.css" rel="stylesheet">
+                        <link href="css/bootstrap-social.css" rel="stylesheet">
+                            <link href="https://use.fontawesome.com/38f344ad72.css" rel="stylesheet">
+                            </link>
+                        </link>
+                    </link>
+                </link>
+            </meta>
+        </meta>
+        <script type="text/javascript">
+            var corr = ['b', 'c', 'a', 'c', 'a', 'b', 'c', 'b', 'b', 'b'];
+var niv = {2 : 'Bajo', 5 : 'Medio', 10 : 'Avanzado'}
+function fnc() { 
+var aciertos = 0;
+var radio_checked = -1;
+for(var j = 0, rad = document.getElementsByTagName('input'); j < rad.length-1; j++){
+if(rad[j].checked) {
+radio_checked++;
+if (rad[j].value == corr[radio_checked]) {
+document.getElementById(rad[j].parentNode.id).style.backgroundColor = '#9BFFA0';
+aciertos++;
+} else {
+document.getElementById(rad[j].parentNode.id).style.backgroundColor = '#FF8C8C';
+}
+}
+}
+document.getElementById('nivel').innerHTML = 'Nivel de Conocimiento: ' + niv[aciertos];
+}
+        </script>
+    </head>
+    <body>
+        <div class="CSS3 jumbotron">
+            <div class="container">
+                <h1>
+                    Preguntas Sobre CSS3
+                </h1>
+                <br>
+                    <p>
+                        Estas preguntas tratan sobre tema de  CSS3, Respondelas y adquiere tu conocimiento sobres esta herramienta de la WEB.
+                    </p>
+                    <a class="btn btn-primary btn-md" href="index.html" role="button">
+                        << Inicio OVI
+                    </a>
+                    <a class="btn btn-primary btn-md" href="Preguntas GITHUB.html" role="button">
+                        Preguntas GIT/GITHUB>>
+                    </a>
+                </br>
+            </div>
+        </div>
+        <div class="rad1 container">
+            <div>
+                <h3>
+                    Responda las siguientes preguntas que mediran el  conocimiento de CSS3 en Medio, Bajo o Avanzado .
+                </h3>
+                <br>
+                    <br>
+                        <form>
+                            <label for="p1" id="rad0" style="align-content: center">
+                                1.¿Qué atributo de HTML se usa para definir un estilo entre líneas?
+                                <input name="p1" type="radio" value="a"/>
+                                a
+                                <input name="p1" type="radio" value="b"/>
+                                b
+                                <input name="p1" type="radio" value="c"/>
+                                c
+                                <input name="p1" type="radio" value="d"/>
+                                d
+                                <br>
+                                    <p>
+                                        a.)CODE
+                                    </p>
+                                    <br>
+                                        <p>
+                                            b.)STYLE
+                                        </p>
+                                        <br>
+                                            <p>
+                                                c.)NAME
+                                            </p>
+                                            <br>
+                                                <p>
+                                                    d.)VALUE
+                                                </p>
+                                            </br>
+                                        </br>
+                                    </br>
+                                </br>
+                            </label>
+                            <br/>
+                            <label for="p2" id="rad1">
+                                2.¿Qué propiedad usamos para establecer el color de fondo?
+                                <input name="p2" type="radio" value="a"/>
+                                a
+                                <input name="p2" type="radio" value="b"/>
+                                b
+                                <input name="p2" type="radio" value="c"/>
+                                c
+                                <input name="p2" type="radio" value="d"/>
+                                d
+                                <br>
+                                    <p>
+                                        a.)STYLE-COLOR
+                                    </p>
+                                    <br>
+                                        <p>
+                                            b.) BGCOLOR:
+                                        </p>
+                                        <br>
+                                            <p>
+                                                c.)BACKGROUND-COLOR:
+                                            </p>
+                                            <br>
+                                                <p>
+                                                    d.)COLOR:
+                                                </p>
+                                            </br>
+                                        </br>
+                                    </br>
+                                </br>
+                            </label>
+                            <br>
+                                <label for="p3" id="rad2">
+                                    3.¿Cómo definimos en mayúscula la primera letra de cada palabra?
+                                    <input name="p3" type="radio" value="a"/>
+                                    a
+                                    <input name="p3" type="radio" value="b"/>
+                                    b
+                                    <input name="p3" type="radio" value="c"/>
+                                    c
+                                    <input name="p3" type="radio" value="d"/>
+                                    d
+                                    <br>
+                                        <p>
+                                            a.)TEXT-TRANSFORM:CAPITALIZE
+                                        </p>
+                                        <br>
+                                            <p>
+                                                b.)TEXT-DECORATION:UPPERCASE
+                                            </p>
+                                            <br>
+                                                <p>
+                                                    c.)TEXT-TRANSFORM:UPPERCASE
+                                                </p>
+                                                <br>
+                                                    <p>
+                                                        d.)TEXT-DECORATION:CAPITALIZE
+                                                    </p>
+                                                </br>
+                                            </br>
+                                        </br>
+                                    </br>
+                                </label>
+                                <br/>
+                                <label for="p4" id="rad3">
+                                    4.¿Qué propiedad utilizamos para definir que una tabla ajuste sus medidas al contenido de la misma?
+                                    <input name="p4" type="radio" value="a"/>
+                                    a
+                                    <input name="p4" type="radio" value="b"/>
+                                    b
+                                    <input name="p4" type="radio" value="c"/>
+                                    c
+                                    <input name="p4" type="radio" value="d"/>
+                                    d
+                                    <br>
+                                        <p>
+                                            a.)TABLE:COLLAPSE
+                                        </p>
+                                        <br>
+                                            <p>
+                                                b.)TABLE-LAYOUT:COLLAPSE
+                                            </p>
+                                            <br>
+                                                <p>
+                                                    c.)TABLE-LAYOUT:AUTO
+                                                </p>
+                                                <br>
+                                                    <p>
+                                                        d.)TABLE:FIXED
+                                                    </p>
+                                                </br>
+                                            </br>
+                                        </br>
+                                    </br>
+                                </label>
+                                <br>
+                                    <label for="p5" id="rad4">
+                                        5.¿Cuál es la sintaxis correcta en HTML para referirse a una hoja de estilo externa?
+                                        <input name="p5" type="radio" value="a"/>
+                                        a
+                                        <input name="p5" type="radio" value="b"/>
+                                        b
+                                        <input name="p5" type="radio" value="c"/>
+                                        c
+                                        <input name="p5" type="radio" value="d"/>
+                                        d
+                                        <br>
+                                            <p>
+                                                a.)< link rel="stylesheet" type="text/css" href="estilos.css" >
+                                            </p>
+                                            <br>
+                                                <p>
+                                                    b.)< link src="/stylesheet" name="text/css" href="/estilos.css" >
+                                                </p>
+                                                <br>
+                                                    <p>
+                                                        c.)< style src="/estilos.css" >
+                                                    </p>
+                                                    <br>
+                                                        <p>
+                                                            d.)< css rel="estilos.css" >
+                                                        </p>
+                                                    </br>
+                                                </br>
+                                            </br>
+                                        </br>
+                                    </label>
+                                    <br>
+                                        <label for="p6" id="rad5" style="align-content: center">
+                                            6.¿Qué propiedad no existe en CSS?
+                                            <input name="p6" type="radio" value="a"/>
+                                            a
+                                            <input name="p6" type="radio" value="b"/>
+                                            b
+                                            <input name="p6" type="radio" value="c"/>
+                                            c
+                                            <input name="p6" type="radio" value="d"/>
+                                            d
+                                            <br>
+                                                <p>
+                                                    a.)BORDER-COLOR
+                                                </p>
+                                                <br>
+                                                    <p>
+                                                        b.)BORDER-LINE
+                                                    </p>
+                                                    <br>
+                                                        <p>
+                                                            c.)BORDER-STYLE
+                                                        </p>
+                                                        <br>
+                                                            <p>
+                                                                d.)BORDER-WIDTH
+                                                            </p>
+                                                        </br>
+                                                    </br>
+                                                </br>
+                                            </br>
+                                        </label>
+                                        <br/>
+                                        <label for="p7" id="rad6">
+                                            7.¿Qué etiquetas de HTML no tiene utilidad si no se combinan  con CSS?
+                                            <input name="p7" type="radio" value="a"/>
+                                            a
+                                            <input name="p7" type="radio" value="b"/>
+                                            b
+                                            <input name="p7" type="radio" value="c"/>
+                                            c
+                                            <input name="p7" type="radio" value="d"/>
+                                            d
+                                            <br>
+                                                <p>
+                                                    a.)< A > Y < P >
+                                                </p>
+                                                <br>
+                                                    <p>
+                                                        b.)< B > Y < I >
+                                                    </p>
+                                                    <br>
+                                                        <p>
+                                                            c.)< DIV > Y < SPAN >
+                                                        </p>
+                                                        <br>
+                                                            <p>
+                                                                d.)< SUB > Y < SUP >
+                                                            </p>
+                                                        </br>
+                                                    </br>
+                                                </br>
+                                            </br>
+                                        </label>
+                                        <br>
+                                            <label for="p8" id="rad7">
+                                                8.¿Seleccione las propiedades que tiene CSS  al utilizarse en modelado de páginas Web?
+                                                <input name="p8" type="radio" value="a"/>
+                                                a
+                                                <input name="p8" type="radio" value="b"/>
+                                                b
+                                                <input name="p8" type="radio" value="c"/>
+                                                c
+                                                <input name="p8" type="radio" value="d"/>
+                                                d
+                                                <br>
+                                                    <p>
+                                                        a.)VINCULADO E INSERTADO
+                                                    </p>
+                                                    <br>
+                                                        <p>
+                                                            b.)VINCULADO, INSERTADO Y EN LÍNEA
+                                                        </p>
+                                                        <br>
+                                                            <p>
+                                                                c.)VINCULADO, INSERTADO, EN LÍNEA Y FILTRADO
+                                                            </p>
+                                                            <br>
+                                                                <p>
+                                                                    d.)LAS ANTERIORES RESPUESTAS NO SON CORRECTAS
+                                                                </p>
+                                                            </br>
+                                                        </br>
+                                                    </br>
+                                                </br>
+                                            </label>
+                                            <br/>
+                                            <label for="p9" id="rad8">
+                                                9.¿Seleccione la propiedad utilizada en CSS que se emplea para definir el espacio entre caracteres en el texto?
+                                                <input name="p9" type="radio" value="a"/>
+                                                a
+                                                <input name="p9" type="radio" value="b"/>
+                                                b
+                                                <input name="p9" type="radio" value="c"/>
+                                                c
+                                                <input name="p9" type="radio" value="d"/>
+                                                d
+                                                <br>
+                                                    <p>
+                                                        a.)WORD-SPACING
+                                                    </p>
+                                                    <br>
+                                                        <p>
+                                                            b.)WHITE-SPACE
+                                                        </p>
+                                                        <br>
+                                                            <p>
+                                                                c.)LETTER-SPACING
+                                                            </p>
+                                                            <br>
+                                                                <p>
+                                                                    d.)LAS ANTERIORES RESPUESTAS NO SON CORRECTAS
+                                                                </p>
+                                                            </br>
+                                                        </br>
+                                                    </br>
+                                                </br>
+                                            </label>
+                                            <br>
+                                                <label for="p10" id="rad9">
+                                                    10.¿Qué propiedad de CSS se emplea para indicar que un texto se debe mostrar en cursiva (itálica)?
+                                                    <input name="p10" type="radio" value="a"/>
+                                                    a
+                                                    <input name="p10" type="radio" value="b"/>
+                                                    b
+                                                    <input name="p10" type="radio" value="c"/>
+                                                    c
+                                                    <input name="p10" type="radio" value="d"/>
+                                                    d
+                                                    <br>
+                                                        <p>
+                                                            a.)FONT-ITALIC
+                                                        </p>
+                                                        <br>
+                                                            <p>
+                                                                b.)FONT-STYLE
+                                                            </p>
+                                                            <br>
+                                                                <p>
+                                                                    c.)FONT-VARIANT
+                                                                </p>
+                                                                <br>
+                                                                    <p>
+                                                                        d.)LAS ANTERIORES RESPUESTAS NO SON CORRECTAS
+                                                                    </p>
+                                                                </br>
+                                                            </br>
+                                                        </br>
+                                                    </br>
+                                                </label>
+                                                <div id="nivel">
+                                                </div>
+                                                <input onclick="fnc()" type="button" value="comprobar"/>
+                                                <br/>
+                                            </br>
+                                        </br>
+                                    </br>
+                                </br>
+                            </br>
+                        </form>
+                    </br>
+                </br>
+            </div>
+        </div>
+        <script src="js/jquery.js">
+            </div>
+        </script>
+        <script src="js/bootstrap.min.js">
+        </script>
+    </body>
+</html>

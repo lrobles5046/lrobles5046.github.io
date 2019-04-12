@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+            HTML5 Pacman
+        </title>
+        <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+                <link href="css/Personalizacion/Mi Estilo.css" rel="stylesheet">
+                    <link href="css/bootstrap-social.css" rel="stylesheet">
+                        <link href="https://use.fontawesome.com/38f344ad72.css" rel="stylesheet">
+                        </link>
+                    </link>
+                </link>
+            </link>
+        </meta>
+        <!--<script src="js/jquery.js">
+            </div>
+        </script>
+        <script src="js/bootstrap.min.js">
+        </script>-->
+        <style type="text/css">
+            @font-face {
+      font-family: 'BDCartoonShoutRegular';
+        src: url('BD_Cartoon_Shout-webfont.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      }
+      #pacman {
+        height:450px;
+        width:342px;
+        margin:20px auto;
+      }
+      #shim { 
+        font-family: BDCartoonShoutRegular; 
+        position:absolute;
+        visibility:hidden
+      }
+      h1 { font-family: BDCartoonShoutRegular; text-align:center; }
+      /*body { width:342px; margin:0px auto; font-family:sans-serif; }*/
+      a { text-decoration:none; }
+        </style>
+    </head>
+    <body>
+        <div id="shim">
+            shim for font face
+        </div>
+        <div class="pacman jumbotron">
+            <div align="center" class="container">
+                <h1>
+                    Juegue Pacman!!!!
+                </h1>
+                <br>
+                    <p>
+                        <h2>
+                            Pacman un Juego para relajarnos un poco, solo opirma la letra "N"  y luego lasflecha para mover a pacman y empiece a comerce los puntos.
+                            !!!Importante!!!  no de se deje coger de los fantasmas, porque pierde vidas.
+                            Solo tiene 3 vidas por juego
+                        </h2>
+                    </p>
+                    <a class="btn btn-primary btn-md" href="index.html" role="button">
+                        << Inicio OVI
+                    </a>
+                    <a class="btn btn-primary btn-md" href="Autores.html" role="button">
+                        Autores >>
+                    </a>
+                </br>
+            </div>
+        </div>
+        <div id="pacman">
+        </div>
+        <script src="js/pacman.js">
+        </script>
+        <script src="js/modernizr-1.5.min.js">
+        </script>
+        <script>
+            var el = document.getElementById("pacman");
+
+    if (Modernizr.canvas && Modernizr.localstorage && 
+        Modernizr.audio && (Modernizr.audio.ogg || Modernizr.audio.mp3)) {
+      window.setTimeout(function () { PACMAN.init(el, "./"); }, 0);
+    } else { 
+      el.innerHTML = "Sorry, needs a decent browser<br /><small>" + 
+        "(firefox 3.6+, Chrome 4+, Opera 10+ and Safari 4+)</small>";
+    }
+        </script>
+    </body>
+</html>
